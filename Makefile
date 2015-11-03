@@ -6,15 +6,15 @@ LDFLAGS = -O3 -Wall -std=c++14
 LDLIBS =
 
 MAIN = multiple.cpp
-SRCS = $(MAIN)
+SRCS = $(MAIN) add.cpp
 OBJS = $(subst .cpp,.o,$(SRCS))
 
 .PHONY: all clean dist-clean
 
-all: $(subst .cpp,,$(SRCS))
+all: main
 
-$(subst .cpp,,$(SRCS)): $(OBJS)
-	    $(CXX) $(LDFLAGS) -o $(subst .cpp,,$(SRCS)) $(OBJS) $(LDLIBS)
+main: $(OBJS)
+	    $(CXX) $(LDFLAGS) -o $(subst .cpp,,$(MAIN)) $(OBJS) $(LDLIBS)
 
 depend: .depend
 
